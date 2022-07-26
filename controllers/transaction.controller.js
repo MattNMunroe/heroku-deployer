@@ -7,4 +7,16 @@ transactions.get("/", (req, res) => {
 })
 //Get a list (or index) of all transactions
 
+transactions.get("/:id", (req, res) => {
+    const transactionId = req.params.id
+    const foundTransaction = transactionsArray.find((transaction) => {
+        return (
+            transaction.id === parseInt(transactionId)
+        )
+    })
+    res.send(foundTransaction)
+})
+
+
+
 module.exports = transactions
