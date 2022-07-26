@@ -17,6 +17,21 @@ transactions.get("/:id", (req, res) => {
     res.send(foundTransaction)
 })
 
+transactions.post("/", (req, res) => {
+    //creating a new transaction
+    transactionsArray.push(req.body)
+    console.log(req.body)
+    res.send(transactionsArray[transactionsArray.length - 1])
+})
 
+transactions.put('/:id', (req, res) => {
+    const { id } = req.params
+    if (transactions[id]) {
+      transactions[id] = req.body;
+      res.send("Updated Tales.")
+    } else {
+      res.redirect('/error')
+    }
+  })
 
 module.exports = transactions
