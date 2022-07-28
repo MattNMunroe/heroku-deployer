@@ -34,4 +34,10 @@ transactions.put('/:id', (req, res) => {
     }
   })
 
+  transactions.delete("/:id", (req, res) => {
+    const { id } = req.params;
+  logsArray.splice(id, 1);
+  res.send(logsArray[id])
+  })
+
 module.exports = transactions
